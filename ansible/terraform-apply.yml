@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    terraform_dir: "{{ playbook_dir }}/../terraform"
+  
+  tasks:
+    - name: Apply terraform infrastructure
+      community.general.terraform:
+        project_path: "{{ terraform_dir }}"
+        force_init: yes
+        variables:
+          yandex_cloud_id: "{{ tf_yandex_cloud_id }}"
+          yandex_folder_id: "{{ tf_yandex_folder_id }}"
+          public_ssh_key_path: "{{ tf_public_ssh_key_path }}"
+      register: infra
+
+    - name: Generate hosts
+      template:
+        src: templates/hosts.j2
+        dest: inventory.ini
+
+    - name: Generate ssh_config
+      template:
+        src: templates/ssh_config.j2
+        dest: ../ssh_config

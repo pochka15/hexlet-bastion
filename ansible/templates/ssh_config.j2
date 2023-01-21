@@ -1,0 +1,11 @@
+Host bastion
+    Hostname {{infra.outputs.bastion.value.network_interface.0.nat_ip_address}}
+    IdentityFile {{private_ssh_key_path}}
+    User ubuntu
+
+{% for it in infra.outputs.webservers.value %}
+Host {{it.network_interface.0.nat_ip_address}}
+    ProxyJump bastion
+
+{% endfor %}
+

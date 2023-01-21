@@ -1,0 +1,7 @@
+[bastion]
+{{infra.outputs.bastion.value.name}} ansible_host={{infra.outputs.bastion.value.network_interface.0.nat_ip_address}}
+
+[webservers]
+{% for it in infra.outputs.webservers.value %}
+{{it.name}} ansible_host={{it.network_interface.0.nat_ip_address}}
+{% endfor %}

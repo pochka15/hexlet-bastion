@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    - terraform_dir: "{{ playbook_dir }}/../terraform"
+
+  tasks:
+    - name: Generate yandex token
+      ansible.builtin.command:
+        cmd: yc iam create-token
+      register:
+        yandex_token_result
+
+    - name: Copy token into a file
+      template:
+        src: templates/yandex_token.j2
+        dest: "{{ terraform_dir }}/secrets.auto.tfvars"
+      vars:
+        yandex_token: "{{ yandex_token_result.stdout }}"

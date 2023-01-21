@@ -1,0 +1,11 @@
+Host bastion
+    Hostname 51.250.11.146
+    IdentityFile ~/.ssh/yandex/id_rsa
+    User ubuntu
+
+Host 51.250.78.198
+    ProxyJump bastion
+
+Host 84.201.158.27
+    ProxyJump bastion
+

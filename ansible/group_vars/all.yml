@@ -1,0 +1,7 @@
+# Terraform variables
+tf_public_ssh_key_path: ~/.ssh/yandex/id_rsa.pub
+tf_yandex_cloud_id: b1gn8jo1kbnubin1iagk
+tf_yandex_folder_id: b1gsl9933v8dibrl1ndc
+
+# Ansible variables
+private_ssh_key_path: ~/.ssh/yandex/id_rsa
