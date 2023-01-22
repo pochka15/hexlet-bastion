@@ -1,0 +1,19 @@
+---
+
+- hosts: webservers
+  gather_facts: false
+
+  tasks:
+    - name: update Caddyfile
+      ansible.builtin.copy:
+        src: Caddyfile
+        dest: "{{ caddy_file_dir }}/Caddyfile"
+      notify:
+        - caddy reload
+      become: true
+
+  handlers:
+    - name: caddy reload
+      ansible.builtin.command:
+        cmd: caddy reload
+        chdir: /etc/caddy            

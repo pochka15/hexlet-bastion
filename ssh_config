@@ -3,9 +3,13 @@ Host bastion
     IdentityFile ~/.ssh/yandex/id_rsa
     User ubuntu
 
-Host 51.250.78.198
+Host 10.5.0.9
     ProxyJump bastion
+    IdentityFile ~/.ssh/yandex/id_rsa
+    User ubuntu
 
-Host 84.201.158.27
+Host 10.5.0.19
     ProxyJump bastion
+    IdentityFile ~/.ssh/yandex/id_rsa
+    User ubuntu
 

@@ -4,8 +4,10 @@ Host bastion
     User ubuntu
 
 {% for it in infra.outputs.webservers.value %}
-Host {{it.network_interface.0.nat_ip_address}}
+Host {{it.network_interface.0.ip_address}}
     ProxyJump bastion
+    IdentityFile {{private_ssh_key_path}}
+    User ubuntu
 
 {% endfor %}
 

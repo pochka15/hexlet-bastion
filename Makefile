@@ -7,5 +7,11 @@ yandex-tokens-setup:
 terraform-apply:
 	ansible-playbook ansible/terraform-apply.yml
 
+setup:
+	ansible-playbook ansible/setup.yml -i ansible/inventory.ini --ssh-extra-args "-F ssh_config"
+
+release:
+	ansible-playbook ansible/release.yml -i ansible/inventory.ini --ssh-extra-args "-F ssh_config"
+
 ssh:
 	ssh -F ssh_config bastion
