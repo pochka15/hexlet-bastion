@@ -15,3 +15,7 @@ This is another drill Hexlet DevOps project
 ## Connect
 
 Connect to the bastion via ssh `make ssh`
+
+## Curl
+
+You can curl balancer: `curl <ip from tfstate>`
